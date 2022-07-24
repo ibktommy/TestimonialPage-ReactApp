@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
-const Form = () => {
-	const [username, SetUsername] = useState("");
-	const [message, SetMessage] = useState("");
-
+const Form = ({ handleSubmit, handleName, handleMessage, username, message }) => {
 	return (
 		<>
 			<form className="flex" onSubmit={handleSubmit}>
@@ -12,7 +9,7 @@ const Form = () => {
 						type="text"
 						placeholder="Your Name Here..."
 						value={username}
-						onChange={(e) => SetUsername(e.target.value)}
+						onChange={handleName}
 					/>
 				</div>
 				<div className="form-content">
@@ -21,7 +18,7 @@ const Form = () => {
 						id="message"
 						placeholder="Your Message Here..."
 						value={message}
-						onChange={(e) => SetMessage(e.target.value)}
+						onChange={handleMessage}
 					/>
 				</div>
 
@@ -29,11 +26,6 @@ const Form = () => {
 			</form>
 		</>
 	);
-};
-
-// Form Submit Function
-const handleSubmit = (e) => {
-	e.preventDefault();
 };
 
 export default Form;

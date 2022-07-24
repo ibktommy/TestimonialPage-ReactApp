@@ -5,6 +5,24 @@ import clientData from './data.json'
 
 
 function App() {
+  const [username, setUsername] = useState("");
+  const [message, setMessage] = useState("");
+  const [data, SetData] = useState(clientData)
+
+  // Form Submit Function
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(data);
+  };
+
+
+  const handleName = (e) => {
+    setUsername(e.target.value)
+  }
+  const handleMessage = (e) => {
+    setMessage(e.target.value)
+  }
 
   return (
     <>
@@ -19,7 +37,14 @@ function App() {
           }
         </div>
 
-        <Form />
+        <Form
+          userdata={clientData}
+          username={username}
+          message={message}
+          handleName={handleName}
+          handleMessage={handleMessage}
+          handleSubmit={handleSubmit}
+        />
       </div>
     </>
   );
