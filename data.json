@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Wizzy Starboi",
+    "image": "dataImage/img(1).jpg",
+    "testimony": "I love this company"
+  },
+  {
+    "id": 2,
+    "name": "OBJ Himself",
+    "image": "dataImage/img(2).jpg",
+    "testimony": "They provide quality service"
+  },
+  {
+    "id": 3,
+    "name": "Wizzy",
+    "image": "dataImage/img(3).jpg",
+    "testimony": "The user experience is just great"
+  }
+]
