@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './component/Card/Card';
+import Form from './component/Form/Form';
 import clientData from './data.json'
 
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <div className="container flex">
         <h1>Testimonial Page</h1>
+
         <div className="container-content flex">
           {
             clientData.map(({ id, ...props }) => (
@@ -15,6 +17,8 @@ function App() {
             ))
           }
         </div>
+
+        <Form />
       </div>
     </>
   );
