@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Form = ({ handleSubmit, handleName, handleMessage, username, message }) => {
+const Form = ({
+	handleSubmit,
+	handleName,
+	handleMessage,
+	username,
+	message,
+}) => {
 	return (
 		<>
 			<form className="flex" onSubmit={handleSubmit}>

@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
 import clientData from './data.json'
+
+// Getting Data Array From localStorage and Storing it in the Data-State
+// const getLocalStorage = () => {
+//   let userDataArray = localStorage.getItem('data')
+//   if (userDataArray) {
+//     return JSON.parse(localStorage.getItem('data'))
+//   } else {
+//     return []
+//   }
+// }
 
 
 function App() {
@@ -18,6 +28,13 @@ function App() {
     if (!username || !message) {
       alert('PLEASE FILL IN THE INPUT FIELDS TO SUBMIT!')
     } else {
+      const newData = {
+        id: data.length + 1,
+        name: username,
+        testimony: message
+      }
+
+      SetData([...data, clientData.push(newData)])
       setMessage("")
       setUsername('')
     }
