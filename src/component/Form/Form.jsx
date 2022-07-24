@@ -3,6 +3,7 @@ import React from "react";
 const Form = ({
 	handleSubmit,
 	handleName,
+	handleFile,
 	handleMessage,
 	username,
 	message,
@@ -17,6 +18,9 @@ const Form = ({
 						value={username}
 						onChange={handleName}
 					/>
+				</div>
+				<div className="form-content">
+					<input type="file" accept="image/*" onChange={handleFile} />
 				</div>
 				<div className="form-content">
 					<textarea

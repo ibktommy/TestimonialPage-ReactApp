@@ -3,40 +3,37 @@ import Card from './component/Card/Card';
 import Form from './component/Form/Form';
 import clientData from './data.json'
 
-// Getting Data Array From localStorage and Storing it in the Data-State
-// const getLocalStorage = () => {
-//   let userDataArray = localStorage.getItem('data')
-//   if (userDataArray) {
-//     return JSON.parse(localStorage.getItem('data'))
-//   } else {
-//     return []
-//   }
-// }
-
 
 function App() {
   const [username, setUsername] = useState("");
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [message, setMessage] = useState("");
-  const [data, SetData] = useState(clientData)
+  const [data, setData] = useState(clientData)
 
   // Form Submit Function
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log(data);
+    console.log(imageFile)
 
     if (!username || !message) {
       alert('PLEASE FILL IN THE INPUT FIELDS TO SUBMIT!')
+    } else if (!imageFile) {
+      alert('PLEASE SELECT AN IMAGE FOR UPLOAD!')
     } else {
       const newData = {
         id: data.length + 1,
         name: username,
+        image: imageUrl,
         testimony: message
       }
 
-      SetData([...data, clientData.push(newData)])
+      setData([...data, clientData.push(newData)])
       setMessage("")
       setUsername('')
+      setImageFile(null)
     }
   };
 
@@ -47,6 +44,15 @@ function App() {
   const handleMessage = (e) => {
     setMessage(e.target.value)
   }
+  const handleFile = (e) => {
+    setImageFile(e.target.files[0])
+  }
+
+  useEffect(() => {
+    if (imageFile) {
+      setImageUrl(URL.createObjectURL(imageFile))
+    }
+  }, [imageFile])
 
   return (
     <>
@@ -66,6 +72,7 @@ function App() {
           username={username}
           message={message}
           handleName={handleName}
+          handleFile={handleFile}
           handleMessage={handleMessage}
           handleSubmit={handleSubmit}
         />
