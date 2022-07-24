@@ -1,15 +1,13 @@
 import React from 'react'
 
 const Form = () => {
-  return (
+	return (
 		<>
-			<form className="flex">
-				<div className="form-content flex">
-					{/* <label htmlFor="name">Enter Your Name</label> */}
+			<form className="flex" onSubmit={handleSubmit}>
+				<div className="form-content">
 					<input type="text" placeholder="Your Name Here..." />
 				</div>
-				<div className="form-content flex">
-					{/* <label htmlFor="message">Enter Your Name</label> */}
+				<div className="form-content">
 					<textarea
 						name="message"
 						id="message"
@@ -21,6 +19,11 @@ const Form = () => {
 			</form>
 		</>
 	);
-}
+};
+
+// Form Submit Function
+const handleSubmit = (e) => {
+	e.preventDefault();
+};
 
 export default Form
