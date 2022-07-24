@@ -14,6 +14,13 @@ function App() {
     e.preventDefault();
 
     console.log(data);
+
+    if (!username || !message) {
+      alert('PLEASE FILL IN THE INPUT FIELDS TO SUBMIT!')
+    } else {
+      setMessage("")
+      setUsername('')
+    }
   };
 
 
