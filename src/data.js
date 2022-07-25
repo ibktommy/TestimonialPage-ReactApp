@@ -1,4 +1,4 @@
-[
+const userData = [
 	{
 		"id": 1,
 		"name": "Wizzy Starboi",
@@ -12,3 +12,5 @@
 		"testimony": "They provide quality service"
 	}
 ]
+
+export default userData;

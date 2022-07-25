@@ -1,6 +1,7 @@
 import React from "react";
 
 const Card = ({ image, name, testimony }) => {
+
 	return (
 		<>
 			<div className="content-card flex">
