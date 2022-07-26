@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
-// import clientData from './data.json'
 
 function App() {
   const [username, setUsername] = useState("");
@@ -23,13 +22,14 @@ function App() {
       })
       .then((responseData) => {
         let userData = responseData
-        console.log(responseData)
         setData(userData)
       })
   }
 
   useEffect(() => {
     getData()
+
+
   }, [])
 
   const handleName = (e) => {
@@ -52,8 +52,8 @@ function App() {
     }
     const newData = {
       "id": data.length + 1,
-      "image": URL.createObjectURL(imageFile),
       "name": username,
+      "image": URL.createObjectURL(imageFile),
       "testimony": message
     }
 
@@ -62,7 +62,9 @@ function App() {
     setImageFile(null)
     setImageUrl(null)
     setData([...data, newData])
+    localStorage.setItem('data', JSON.stringify([...data, newData]))
   }
+
 
   return (
     <>
