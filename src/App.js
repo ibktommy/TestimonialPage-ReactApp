@@ -1,23 +1,8 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
-import clientData from './data'
-
-// Function to Get Data in localStorage and load it when the browser reloads
-// const getLocalStorage = () => {
-//   const dataArray = localStorage.getItem('data')
-//   if (dataArray) {
-//     return clientData === JSON.parse(dataArray)
-//   } else {
-//     return []
-//   }
-// }
-
-window.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello')
-
-  localStorage.getItem('data')
-})
+import clientData from './data.json'
 
 function App() {
   const [username, setUsername] = useState("");
@@ -51,6 +36,7 @@ function App() {
       setMessage("")
       setUsername('')
       setImageFile('')
+      sendData(newData)
     }
   };
 
@@ -63,6 +49,27 @@ function App() {
   }
   const handleFile = (e) => {
     setImageFile(e.target.files[0])
+  }
+
+  const sendData = (data) => {
+    axios({
+      url: '../src/data.json',
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+      },
+      data: {
+        data
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          alert('Data is sent to server!')
+        }
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
   }
 
   useEffect(() => {
