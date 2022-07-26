@@ -2,9 +2,9 @@ import React from "react";
 
 const Form = ({
 	handleSubmit,
-	handleName,
-	handleFile,
-	handleMessage,
+	setImageFile,
+	setMessage,
+	setUsername,
 	username,
 	message,
 }) => {
@@ -16,11 +16,15 @@ const Form = ({
 						type="text"
 						placeholder="Your Name Here..."
 						value={username}
-						onChange={handleName}
+						onChange={(e) => setUsername(e.target.value)}
 					/>
 				</div>
 				<div className="form-content">
-					<input type="file" accept="image/*" onChange={handleFile} />
+					<input
+						type="file"
+						accept="image/*"
+						onChange={(e) => setImageFile(e.target.files[0])}
+					/>
 				</div>
 				<div className="form-content">
 					<textarea
@@ -28,7 +32,7 @@ const Form = ({
 						id="message"
 						placeholder="Your Message Here..."
 						value={message}
-						onChange={handleMessage}
+						onChange={(e) => setMessage(e.target.value)}
 					/>
 				</div>
 

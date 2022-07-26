@@ -3,6 +3,7 @@ import Card from './component/Card/Card';
 import Form from './component/Form/Form';
 import { getData } from './utils/fetch';
 
+
 function App() {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -13,16 +14,6 @@ function App() {
   useEffect(() => {
     getData(setData)
   }, [])
-
-  const handleName = (e) => {
-    setUsername(e.target.value)
-  }
-  const handleMessage = (e) => {
-    setMessage(e.target.value)
-  }
-  const handleFile = (e) => {
-    setImageFile(e.target.files[0])
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -64,9 +55,9 @@ function App() {
         <Form
           username={username}
           message={message}
-          handleName={handleName}
-          handleFile={handleFile}
-          handleMessage={handleMessage}
+          setMessage={setMessage}
+          setUsername={setUsername}
+          setImageFile={setImageFile}
           handleSubmit={handleSubmit}
         />
       </div>
