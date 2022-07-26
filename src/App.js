@@ -2,44 +2,40 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
-import clientData from './data.json'
+// import clientData from './data.json'
 
 function App() {
   const [username, setUsername] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [message, setMessage] = useState("");
-  const [data, setData] = useState(clientData)
+  const [data, setData] = useState([])
 
-  console.log(data)
-
-
-  // Form Submit Function
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // console.log(data);
-
-    if (!username || !message) {
-      alert('PLEASE FILL IN THE INPUT FIELDS TO SUBMIT!')
-    } else if (!imageFile) {
-      alert('PLEASE SELECT AN IMAGE FOR UPLOAD!')
-    } else {
-      const newData = {
-        id: data.length + 1,
-        name: username,
-        image: imageUrl,
-        testimony: message
+  const getData = () => {
+    fetch('data.json', {
+      headers: {
+        'Content-Type': 'appplication/json',
+        'Accept': 'appplication/json'
       }
+    })
+      .then((response) => {
+        console.log(response)
+        return response.json()
+      })
+      .then((responseData) => {
+        console.log(responseData)
+        setData(responseData)
+      })
+  }
 
-      setData([...data, newData])
-      setMessage("")
-      setUsername('')
-      setImageFile('')
-      sendData(newData)
+  useEffect(() => {
+    if (imageFile) {
+      setImageUrl(URL.createObjectURL(imageFile))
     }
-  };
 
+    getData()
+
+  }, [imageFile])
 
   const handleName = (e) => {
     setUsername(e.target.value)
@@ -51,34 +47,6 @@ function App() {
     setImageFile(e.target.files[0])
   }
 
-  const sendData = (data) => {
-    axios({
-      url: '../src/data.json',
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-      },
-      data: {
-        data
-      },
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          alert('Data is sent to server!')
-        }
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
-  }
-
-  useEffect(() => {
-    if (imageFile) {
-      setImageUrl(URL.createObjectURL(imageFile))
-    }
-
-  }, [imageFile])
-
   return (
     <>
       <div className="container flex">
@@ -86,26 +54,26 @@ function App() {
 
         <div className="container-content flex">
           {
-            data.map(({ id, ...props }) => (
+            data && data.length > 0 && data.map(({ id, ...props }) => (
               <Card key={id} {...props} />
             ))
           }
         </div>
 
         <Form
-          userdata={clientData}
+          // userdata={clientData}
           username={username}
           message={message}
           handleName={handleName}
           handleFile={handleFile}
           handleMessage={handleMessage}
-          handleSubmit={handleSubmit}
+          // handleSubmit={handleSubmit}
         />
       </div>
     </>
   );
 }
 
-
-
 export default App;
+
+
