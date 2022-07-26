@@ -6,9 +6,9 @@ import Form from './component/Form/Form';
 
 function App() {
   const [username, setUsername] = useState("");
+  const [message, setMessage] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  const [message, setMessage] = useState("");
   const [data, setData] = useState([])
 
   const getData = () => {
@@ -19,23 +19,18 @@ function App() {
       }
     })
       .then((response) => {
-        console.log(response)
         return response.json()
       })
       .then((responseData) => {
+        let userData = responseData
         console.log(responseData)
-        setData(responseData)
+        setData(userData)
       })
   }
 
   useEffect(() => {
-    if (imageFile) {
-      setImageUrl(URL.createObjectURL(imageFile))
-    }
-
     getData()
-
-  }, [imageFile])
+  }, [])
 
   const handleName = (e) => {
     setUsername(e.target.value)
@@ -45,6 +40,28 @@ function App() {
   }
   const handleFile = (e) => {
     setImageFile(e.target.files[0])
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (!username || !message) {
+      alert('PLEASE FILL IN ALL INPUT FIELDS!')
+    } else if (!imageFile) {
+      alert('SELECT A PICTURE FOR UPLOAD')
+    }
+    const newData = {
+      "id": data.length + 1,
+      "image": URL.createObjectURL(imageFile),
+      "name": username,
+      "testimony": message
+    }
+
+    setUsername("")
+    setMessage("")
+    setImageFile(null)
+    setImageUrl(null)
+    setData([...data, newData])
   }
 
   return (
@@ -61,13 +78,12 @@ function App() {
         </div>
 
         <Form
-          // userdata={clientData}
           username={username}
           message={message}
           handleName={handleName}
           handleFile={handleFile}
           handleMessage={handleMessage}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </div>
     </>
