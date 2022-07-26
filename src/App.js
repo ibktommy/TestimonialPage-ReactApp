@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
@@ -35,8 +34,6 @@ function App() {
 
   useEffect(() => {
     getData()
-
-
   }, [])
 
   const handleName = (e) => {
