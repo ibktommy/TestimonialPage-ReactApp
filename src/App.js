@@ -22,7 +22,14 @@ function App() {
       })
       .then((responseData) => {
         let userData = responseData
-        setData(userData)
+
+        // Setting Data-State based on the condition - if there exist a data in localStorage or Not
+        let getLocalStorage = localStorage.getItem('data')
+        if (getLocalStorage) {
+          setData(JSON.parse(getLocalStorage))
+        } else {
+          setData(userData)
+        }
       })
   }
 
