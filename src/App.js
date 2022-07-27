@@ -11,33 +11,10 @@ function App() {
   const [imageUrl, setImageUrl] = useState(null);
   const [data, setData] = useState([])
 
+  // Getting the Data and setting it in data-state using useEffect after the component renders
   useEffect(() => {
     getData(setData)
   }, [])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (!username || !message) {
-      alert('PLEASE FILL IN ALL INPUT FIELDS!')
-    } else if (!imageFile) {
-      alert('SELECT A PICTURE FOR UPLOAD')
-    }
-    const newData = {
-      "id": data.length + 1,
-      "name": username,
-      "image": URL.createObjectURL(imageFile),
-      "testimony": message
-    }
-
-    setUsername("")
-    setMessage("")
-    setImageFile(null)
-    setImageUrl(null)
-    setData([...data, newData])
-    localStorage.setItem('data', JSON.stringify([...data, newData]))
-  }
-
 
   return (
     <>
@@ -55,10 +32,14 @@ function App() {
         <Form
           username={username}
           message={message}
+          imageFile={imageFile}
+          imageUrl={imageUrl}
           setMessage={setMessage}
           setUsername={setUsername}
           setImageFile={setImageFile}
-          handleSubmit={handleSubmit}
+          setImageUrl={setImageUrl}
+          data={data}
+          setData={setData}
         />
       </div>
     </>
