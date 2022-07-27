@@ -19,22 +19,23 @@ const Form = ({
 			alert("PLEASE FILL IN ALL INPUT FIELDS!");
 		} else if (!imageFile) {
 			alert("SELECT A PICTURE FOR UPLOAD");
+		} else {
+			const newData = {
+				id: data.length + 1,
+				name: username,
+				image: URL.createObjectURL(imageFile),
+				testimony: message,
+			};
+
+			setUsername("");
+			setMessage("");
+			setImageFile(null);
+			setImageUrl(null);
+			setData([...data, newData]);
+
+			// Save the updated data-state to localStorage
+			localStorage.setItem("data", JSON.stringify([...data, newData]));
 		}
-		const newData = {
-			id: data.length + 1,
-			name: username,
-			image: URL.createObjectURL(imageFile),
-			testimony: message,
-		};
-
-		setUsername("");
-		setMessage("");
-		setImageFile(null);
-		setImageUrl(null);
-		setData([...data, newData]);
-
-		// Save the updated data-state to localStorage
-		localStorage.setItem("data", JSON.stringify([...data, newData]));
 	}
 
 	return (

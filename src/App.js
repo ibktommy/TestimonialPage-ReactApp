@@ -3,7 +3,6 @@ import Card from './component/Card/Card';
 import Form from './component/Form/Form';
 import { getData } from './utils/fetch';
 
-
 function App() {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -47,5 +46,3 @@ function App() {
 }
 
 export default App;
-
-

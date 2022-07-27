@@ -35,7 +35,7 @@ button {
 	min-height: 100%;
 	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
 		url(./image/background.jpg) no-repeat center center/cover;
-	padding: 5rem 2rem;
+	padding: 2rem 2rem;
 	align-items: center;
   gap: 2rem;
 
@@ -70,11 +70,13 @@ button {
 
       .name {
         font-size: 1.4rem;
+        text-transform: uppercase;
       }
 
       .para {
         font-size: 1.6rem;
         font-style: italic;
+        text-align: center;
       }
 		}
 	}
@@ -82,8 +84,8 @@ button {
   form {
       width: 40rem;
       padding: 1.5rem 1rem;
-      margin-top: 10rem;
-      margin-right: 2rem;
+      // margin: 10rem 0rem 0rem 2rem;
+      // margin-right: 2rem;
       gap: 1.5rem;
       background: rgba(220, 200, 190, 0.6);
       align-self: flex-end;
@@ -146,4 +148,27 @@ button {
         }
       }
     }
+}
+
+@media(max-width: 650px) {
+  .container {
+    h1 {
+      font-size: 2rem;
+    }
+    &-content {
+      width: 90%;
+
+      .content-card {
+        padding: 2rem;
+        clip-path: none;
+
+        .para {
+          font-size: 1.4rem;
+        }
+      }
+    }
+    form {
+      width: 100%;
+    }
+  }
 }
