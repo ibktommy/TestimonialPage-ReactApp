@@ -60,6 +60,7 @@ button {
 			clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
 			align-items: center;
 			gap: 1rem;
+      position: relative;
 
 			img {
 				width: 10rem;
@@ -77,6 +78,24 @@ button {
         font-size: 1.6rem;
         font-style: italic;
         text-align: center;
+      }
+
+      button {
+        position: absolute;
+        top: 5%;
+        right: 3%;
+        background: orangered;
+        color: #fff;
+        font-size: 1.6rem;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 3rem;
+
+        &:hover {
+          box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 2px 6px 2px;
+          transform: scale(1.1);
+          transition: ease-out .5s;
+        }
       }
 		}
 	}
