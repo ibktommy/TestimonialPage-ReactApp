@@ -12,7 +12,7 @@ const App = () => {
     fetchData(setData)
   }, [])
 
-  console.log(data)
+  // console.log(data)
 
   //Function To Get Data From Form-Component
   function addUserDataHandler(newUserData) {
