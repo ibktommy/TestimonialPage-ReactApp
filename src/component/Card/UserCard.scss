@@ -33,3 +33,21 @@
 		}
 	}
 }
+
+@media(max-width: 850px) {
+	.cards {
+		width: 80vw;
+
+		&-content {
+			clip-path: none;
+
+			&-name {
+				font-size: 1.6rem;
+			}
+
+		  &-testimony {
+				font-size: 1.4rem;
+			}
+		}
+	}
+}
