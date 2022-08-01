@@ -24,6 +24,7 @@ const App = () => {
 
   return (
     <div>
+      <h1 className="header">Testimonial Page</h1>
       <UserCard usersData={data} />
       <Form onAddUserData={addUserDataHandler} dataNum={data} />
     </div>
