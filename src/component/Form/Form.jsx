@@ -30,10 +30,6 @@ const Form = ({ onAddUserData, dataNum }) => {
 			setTestimony("");
 			setImageFile(null);
 			setImageUrl(null);
-			// setData([...data, newData]);
-
-			// Save the updated data-state to localStorage
-			// localStorage.setItem("data", JSON.stringify([...data, newData]));
 		}
 	}
 

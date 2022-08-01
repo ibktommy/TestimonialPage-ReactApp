@@ -1,0 +1,35 @@
+.cards {
+	max-width: 80rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	&-content {
+		background: rgba(255, 255, 255, .7);
+		clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
+		padding: 1rem 0;
+
+		&-img {
+			width: 15rem;
+			height: 15rem;
+			object-fit: cover;
+			border-radius: 10rem;
+		}
+
+		&-name {
+			font-size: 2rem;
+		}
+
+		&-testimony {
+			font-size: 1.6rem;
+			font-style: italic;
+		}
+	}
+}
