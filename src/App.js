@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './component/Card/Card';
 import Form from './component/Form/Form';
-import { getData } from './utils/fetch';
+import { getData } from './utils/fetchData';
 
 function App() {
   const [username, setUsername] = useState("");
