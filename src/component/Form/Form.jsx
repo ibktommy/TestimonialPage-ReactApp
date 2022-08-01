@@ -1,74 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Form.scss";
 
-const Form = ({
-	username,
-	message,
-	imageFile,
-	data,
-	setMessage,
-	setUsername,
-	setImageUrl,
-	setImageFile,
-	setData,
-}) => {
-	// FUNCTION CALLED WHEN SUBMITTING FORM
-	function handleSubmit(e) {
+const Form = ({ onAddUserData, dataNum }) => {
+	// Setting State
+	const [name, setName] = useState("");
+	const [testimony, setTestimony] = useState("");
+	const [imageFile, setImageFile] = useState(null);
+	const [imageUrl, setImageUrl] = useState(null);
+
+	function formSubmitHandler(e) {
 		e.preventDefault();
 
-		if (!username || !message) {
+		if (!name || !testimony) {
 			alert("PLEASE FILL IN ALL INPUT FIELDS!");
 		} else if (!imageFile) {
 			alert("SELECT A PICTURE FOR UPLOAD");
 		} else {
 			const newData = {
-				id: data.length + 1,
-				name: username,
+				id: dataNum.length + 1,
+				name: name,
 				image: URL.createObjectURL(imageFile),
-				testimony: message,
+				testimony: testimony,
 			};
 
-			setUsername("");
-			setMessage("");
+			//Passing the NewData Up to App.JS Using Prop Value
+			onAddUserData(newData);
+			// Resetting the input-state values
+			setName("");
+			setTestimony("");
 			setImageFile(null);
 			setImageUrl(null);
-			setData([...data, newData]);
+			// setData([...data, newData]);
 
 			// Save the updated data-state to localStorage
-			localStorage.setItem("data", JSON.stringify([...data, newData]));
+			// localStorage.setItem("data", JSON.stringify([...data, newData]));
 		}
 	}
 
-	return (
-		<>
-			<form className="flex" onSubmit={handleSubmit}>
-				<div className="form-content">
-					<input
-						type="text"
-						placeholder="Your Name Here..."
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-					/>
-				</div>
-				<div className="form-content">
-					<input
-						type="file"
-						accept="image/*"
-						onChange={(e) => setImageFile(e.target.files[0])}
-					/>
-				</div>
-				<div className="form-content">
-					<textarea
-						name="message"
-						id="message"
-						placeholder="Your Message Here..."
-						value={message}
-						onChange={(e) => setMessage(e.target.value)}
-					/>
-				</div>
+	function nameInputHandler(e) {
+		setName(e.target.value);
+	}
+	function testimonyInputHandler(e) {
+		setTestimony(e.target.value);
+	}
+	function imageUploadHandler(e) {
+		setImageFile(e.target.files[0]);
+	}
 
-				<button type="submit">Submit</button>
-			</form>
-		</>
+	return (
+		<form onSubmit={formSubmitHandler} className="form-card">
+			<div className="form-card_input">
+				<input
+					type="text"
+					placeholder="Enter Your Name"
+					onChange={nameInputHandler}
+					value={name}
+				/>
+			</div>
+			<div className="form-card_input">
+				<input type="file" accept="image/*" onChange={imageUploadHandler} />
+			</div>
+			<div className="form-card_input">
+				<textarea
+					name="message"
+					placeholder="Enter Your Testimony..."
+					onChange={testimonyInputHandler}
+					value={testimony}
+				/>
+			</div>
+
+			<button type="submit">Click to Upload</button>
+		</form>
 	);
 };
 
