@@ -15,6 +15,15 @@ function App() {
     getData(setData)
   }, [])
 
+  console.log(data)
+
+  // Delete a Chosen Card
+  const deleteTestimonyCard = (id) => {
+    setData(data.filter((eachData) => eachData.id !== id))
+  }
+
+  console.log(data)
+
   return (
     <>
       <div className="container flex">
@@ -23,7 +32,7 @@ function App() {
         <div className="container-content flex">
           {
             data && data.length > 0 && data.map(({ id, ...props }) => (
-              <Card key={id} {...props} />
+              <Card key={id} {...props} deleteTestimonyCard={deleteTestimonyCard} data={data} />
             ))
           }
         </div>

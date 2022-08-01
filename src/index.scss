@@ -10,9 +10,12 @@ html {
 }
 
 body {
-	min-height: 100vh;
 	width: 100vw;
-  overflow-x: hidden;
+	min-height: 100vh;
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url(./image/background.jpg) no-repeat center/cover;
+	position: relative;
+	overflow-x: hidden;
+	padding: 3rem 1rem;
 }
 
 input,
@@ -24,168 +27,32 @@ button {
   background: transparent;
   color: #000;
 }
-
-.flex {
-	display: flex;
-	flex-direction: column;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-.container {
-	width: 100%;
-	min-height: 100%;
-	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-		url(./image/background.jpg) no-repeat center center/cover;
-	padding: 2rem 2rem;
-	align-items: center;
-  gap: 2rem;
-
-  h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    color: #fff;
-    letter-spacing: .2rem;
-  }
-
-	&-content {
-		min-height: 100%;
-		width: 60%;
-		margin: 0 auto;
-		gap: 2rem;
-
-		.content-card {
-			width: 100%;
-			background: rgba(220, 200, 190, 0.6);
-			padding: 2rem 5rem;
-			clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
-			align-items: center;
-			gap: 1rem;
-      position: relative;
-
-			img {
-				width: 10rem;
-				height: 10rem;
-				border-radius: 10rem;
-				object-fit: cover;
-			}
-
-      .name {
-        font-size: 1.4rem;
-        text-transform: uppercase;
-      }
-
-      .para {
-        font-size: 1.6rem;
-        font-style: italic;
-        text-align: center;
-      }
-
-      button {
-        position: absolute;
-        top: 5%;
-        right: 3%;
-        background: orangered;
-        color: #fff;
-        font-size: 1.6rem;
-        height: 3rem;
-        width: 3rem;
-        border-radius: 3rem;
-
-        &:hover {
-          box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 2px 6px 2px;
-          transform: scale(1.1);
-          transition: ease-out .5s;
-        }
-      }
-		}
-	}
-
-  form {
-      width: 40rem;
-      padding: 1.5rem 1rem;
-      gap: 1.5rem;
-      background: rgba(220, 200, 190, 0.6);
-      align-self: flex-end;
-
-      .form-content {
-        gap: .5rem;
-
-        input {
-          width: 100%;
-          height: 4rem;
-          padding: 1rem 1.2rem;
-        }
-
-        textarea {
-          width: 100%;
-          min-height: 10rem;
-          resize: none;
-          padding: 1rem 1.2rem;
-        }
-
-        input,
-        textarea {
-          border-bottom: .2rem dotted orangered;
-          border-left: .2rem dotted orangered;
-
-          &::placeholder {
-            color: #000;
-          }
-
-          &:focus,
-          &:active {
-            border-style: solid;
-            transition: border-style 1s ease;
-
-            &::placeholder {
-              font-size: 1rem;
-              opacity: .7;
-              transition: ease .4s;
-            }
-          }
-        }
-      }
-
-      button {
-        background: rgba(255, 68, 0, 0.664);
-        align-self: center;
-        padding: 1rem 1.5rem;
-        color: #ccc;
-        font-size: 1.6rem;
-        text-transform: uppercase;
-        font-weight: bold;
-        border: .1rem solid orangered;
-
-        &:hover {
-          background: transparent;
-          color: rgb(31, 31, 31);
-          border: .1rem solid orangered;
-          transition: all ease .4s;
-          cursor: pointer;
-        }
-      }
-    }
+html {
+	font-size: 62.5%;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media(max-width: 650px) {
-  .container {
-    h1 {
-      font-size: 2rem;
-    }
-    &-content {
-      width: 90%;
+body {
+	width: 100vw;
+	min-height: 100vh;
+	background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url(./image/background.jpg) no-repeat center/cover;
+	position: relative;
+	overflow-x: hidden;
+	padding: 3rem 1rem;
+}
 
-      .content-card {
-        padding: 2rem;
-        clip-path: none;
-
-        .para {
-          font-size: 1.4rem;
-        }
-      }
-    }
-    form {
-      width: 100%;
-    }
-  }
+input,
+textarea,
+button {
+  font-family: inherit;
+  outline: none;
+  border: 0;
+  background: transparent;
+  color: #000;
 }
