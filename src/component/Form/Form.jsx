@@ -8,14 +8,19 @@ const Form = ({ onAddUserData, dataNum }) => {
 	const [testimony, setTestimony] = useState("");
 	const [imageFile, setImageFile] = useState(null);
 	const [imageUrl, setImageUrl] = useState(null);
+	const [error, setError] = useState("");
 
 	function formSubmitHandler(e) {
 		e.preventDefault();
 
 		if (!name || !testimony) {
-			alert("PLEASE FILL IN ALL INPUT FIELDS!");
+			setError({
+				message: "PLEASE FILL IN ALL INPUT FIELDS!",
+			});
 		} else if (!imageFile) {
-			alert("SELECT A PICTURE FOR UPLOAD");
+			setError({
+				message: "SELECT A PICTURE FOR UPLOAD",
+			});
 		} else {
 			const newData = {
 				id: dataNum.length + 1,
@@ -43,10 +48,15 @@ const Form = ({ onAddUserData, dataNum }) => {
 	function imageUploadHandler(e) {
 		setImageFile(e.target.files[0]);
 	}
+	function errorHandler() {
+		setError(null);
+	}
 
 	return (
 		<>
-			<ErrorlModal />
+			{error && (
+				<ErrorlModal errorMessage={error.message} onClick={errorHandler} />
+			)}
 			<form onSubmit={formSubmitHandler} className="form-card">
 				<div className="form-card_input">
 					<input

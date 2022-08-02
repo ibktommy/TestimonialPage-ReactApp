@@ -1,12 +1,12 @@
 import React from 'react'
 import "./ErrorModal.scss";
 
-const ErrorlModal = (props) => {
+const ErrorlModal = ({ errorMessage }) => {
 	return (
 		<div className="error-bg">
 			<div className="error-bg-card">
-				<i class="fa-solid fa-triangle-exclamation"></i>
-				<p>{props.errorMessage}</p>
+				<i className="fa-solid fa-triangle-exclamation"></i>
+				<p>{errorMessage}</p>
 				<button>Close</button>
 			</div>
 		</div>

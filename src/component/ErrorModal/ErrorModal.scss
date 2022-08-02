@@ -23,14 +23,13 @@
     gap: 1.5rem;
 
     i {
-      font-size: 2rem;
+      font-size: 6rem;
       color: red;
     }
 
     p {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
-      line-height: 1.6;
     }
 
     button {
@@ -44,6 +43,7 @@
       cursor: pointer;
 
       &:hover {
+        background: orangered;
         transform: scale(1.04);
         transition: all .4s ease;
       }
