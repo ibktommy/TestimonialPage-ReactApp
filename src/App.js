@@ -26,6 +26,7 @@ const App = () => {
     const filteredData = data.filter((value) => value.id !== id)
     console.log(filteredData)
     setData(filteredData)
+    localStorage.setItem('data', JSON.stringify(filteredData))
   }
 
   return (
