@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ErrorlModal from "../ErrorModal/ErrorlModal";
 import "./Form.scss";
 
 const Form = ({ onAddUserData, dataNum }) => {
@@ -44,29 +45,32 @@ const Form = ({ onAddUserData, dataNum }) => {
 	}
 
 	return (
-		<form onSubmit={formSubmitHandler} className="form-card">
-			<div className="form-card_input">
-				<input
-					type="text"
-					placeholder="Enter Your Name"
-					onChange={nameInputHandler}
-					value={name}
-				/>
-			</div>
-			<div className="form-card_input">
-				<input type="file" accept="image/*" onChange={imageUploadHandler} />
-			</div>
-			<div className="form-card_input">
-				<textarea
-					name="message"
-					placeholder="Enter Your Testimony..."
-					onChange={testimonyInputHandler}
-					value={testimony}
-				/>
-			</div>
+		<>
+			<ErrorlModal />
+			<form onSubmit={formSubmitHandler} className="form-card">
+				<div className="form-card_input">
+					<input
+						type="text"
+						placeholder="Enter Your Name"
+						onChange={nameInputHandler}
+						value={name}
+					/>
+				</div>
+				<div className="form-card_input">
+					<input type="file" accept="image/*" onChange={imageUploadHandler} />
+				</div>
+				<div className="form-card_input">
+					<textarea
+						name="message"
+						placeholder="Enter Your Testimony..."
+						onChange={testimonyInputHandler}
+						value={testimony}
+					/>
+				</div>
 
-			<button type="submit">Click to Upload</button>
-		</form>
+				<button type="submit">Click to Upload</button>
+			</form>
+		</>
 	);
 };
 
