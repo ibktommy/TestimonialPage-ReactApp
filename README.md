@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## In this project, I created a Testimonial page whereby testimonies of clients can be uploaded by the clients themselves using a form page. The Form takes name-value, image-value, and message-value, then adds it with previous testimonies (if present) and displays it on the webpage. Core React concepts and Hooks are utilized and also clients-testimonies is persisted to the localtorage such that when the webpage is reloaded, the data still remains.
+
 ## Available Scripts
 
 In the project directory, you can run:
