@@ -11,7 +11,14 @@ const UserCard = ({ usersData, onHandleDelete }) => {
 						<img className="cards-content-img" src={image} alt={name} />
 						<h2 className="cards-content-name">{name}</h2>
 						<p className="cards-content-testimony">{testimony}</p>
-						<i className="fas fa-times" onClick={() => onHandleDelete(id)}></i>
+
+						{/* Condition to display delete-icon */}
+						{id !== 1 && id !== 2 && (
+							<i
+								className="fas fa-times"
+								onClick={() => onHandleDelete(id)}
+							></i>
+						)}
 					</div>
 				);
 			})}
