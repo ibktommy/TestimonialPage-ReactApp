@@ -50,3 +50,11 @@
     }
   }
 }
+
+@media(max-width: 768px) {
+  .error-bg {
+    &-card {
+      width: 90vw;
+    }
+  }
+}
